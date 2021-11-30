@@ -2,4 +2,17 @@
     <string name="app_name">MenuPreferences</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="roland_garros">Roland Garros</string>
+    <string name="player1">Rafael Nadal (esp)</string>
+    <string name="player2">Roger Federer (swi)</string>
+    <string name="jump_points_by">Jump points by</string>
+    <string name="decrement_score">Decrement Score</string>
+    <string name="increament_score">Increament Score</string>
+    <string name="men_s_singles_final">MEN\'S SINGLES - FINAL</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 </resources>

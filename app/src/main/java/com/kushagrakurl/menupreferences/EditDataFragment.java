@@ -1,5 +1,7 @@
 package com.kushagrakurl.menupreferences;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,8 +28,13 @@ public class EditDataFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    SharedPreferences sharedpreferences;
+    EditText player1,player2;
+    Button save;
+
     public EditDataFragment() {
         // Required empty public constructor
+
     }
 
     /**
@@ -44,6 +53,7 @@ public class EditDataFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+
     }
 
     @Override
@@ -52,13 +62,25 @@ public class EditDataFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        player1=(EditText)rootView.findViewById(R.id.editText);
+        player2=(EditText)findViewById(R.id.editText2);
+
+
+        save=(Button)findViewById(R.id.button);
+
+        sharedpreferences = getSharedPreferences("players", Context.MODE_PRIVATE);
         return inflater.inflate(R.layout.fragment_edit_data, container, false);
+
+
+
     }
 }
