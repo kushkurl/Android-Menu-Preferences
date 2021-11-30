@@ -5,8 +5,12 @@ package com.kushagrakurl.menupreferences;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SharedPreferences sharedpreferences;
     EditText name,pswrd,email;
     Button save;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,11 +66,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         set3_2 = (TextView)findViewById(R.id.set3_2);
 
         alert = new AlertDialog.Builder(this);
-
-        name=(EditText)findViewById(R.id.editText);
-        pswrd=(EditText)findViewById(R.id.editText2);
-
-
 
         sharedpreferences = getSharedPreferences("players", Context.MODE_PRIVATE);
 
@@ -208,15 +208,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this, "Search" +item.getTitle(), Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.Edit_item:
-                saveDate();
+                //saveDate();
+                Intent intent = new Intent(this, EditDataFragment.class);
+                startActivity(intent);
+                /*Fragment someFragment = new EditDataFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.f, someFragment ); // give your fragment container id in first parameter
+                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();*/
                 return true;
             case R.id.View_item: {
-                SharedPreferences preferences = getSharedPreferences("players", 0);
+
+                FragmentManager myfragmentManager = getSupportFragmentManager();
+                FragmentTransaction myfragmentTransaction = myfragmentManager.beginTransaction ();
+
+                ViewDataFragment viewfragment = new ViewDataFragment();
+
+                myfragmentTransaction.add(R.id.frmLayout, viewfragment, null);
+
+                /*You've to create a frame layout or any other layout with id inside your activity layout and then use that id in java*/
+
+                myfragmentTransaction.commit();
+
+                /*SharedPreferences preferences = getSharedPreferences("players", 0);
                 String Name = preferences.getString("keyName","NA");
                 String Password = preferences.getString("keyPswrd","NA");
                 String E_mail = preferences.getString("keyEmail","NA");
                 Toast.makeText(this, "Name:" +Name+" Password:"+Password+" Email:"+E_mail, Toast.LENGTH_SHORT).show();
-
+*/
                 return true;
             }
             case R.id.Home_item: {
