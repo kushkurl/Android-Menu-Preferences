@@ -64,6 +64,12 @@ public class EditDataFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        String p1 = getArguments().getString("player1");
+        String p2 = getArguments().getString("player2");
+
+        player1.setText(p1);
+        player2.setText(p2);
+
         view = inflater.inflate(R.layout.fragment_edit_data, container, false);
         player1=(EditText)view.findViewById(R.id.editplayer1);
         player2=(EditText)view.findViewById(R.id.editplayer2);

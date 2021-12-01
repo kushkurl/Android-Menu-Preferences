@@ -17,13 +17,13 @@
         android:textAlignment="center"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/player1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/editText"
+        android:id="@+id/player1"
         android:layout_width="240dp"
         android:layout_height="40dp"
 
@@ -40,10 +40,10 @@
         app:layout_constraintVertical_bias="0.298" />
 
     <TextView
-        android:id="@+id/editText2"
+        android:id="@+id/player2"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/player1"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
@@ -61,19 +61,19 @@
         android:layout_width="71dp"
         android:layout_height="36dp"
         android:text="Player 2"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintEnd_toStartOf="@+id/player2"
         app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText2" />
+        app:layout_constraintTop_toTopOf="@+id/player2" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="68dp"
         android:layout_height="32dp"
         android:text="Player 1"
-        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintEnd_toStartOf="@+id/player1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintTop_toTopOf="@+id/player1" />
 
     <Button
         android:id="@+id/Editbutton"
@@ -85,7 +85,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/player2"
         app:layout_constraintVertical_bias="0.162" />
 
 

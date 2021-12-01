@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RadioGroup radioGrp;
     RadioButton pID;
     Slider jumpVal;
+    TextView player1, player2;
     TextView set1_1;
     TextView set1_2;
     TextView set2_1;
@@ -42,8 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     AlertDialog.Builder alert;
 
     SharedPreferences sharedpreferences;
-    EditText name,pswrd,email;
-    Button save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,27 +64,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         set3_1 = (TextView)findViewById(R.id.set3_1);
         set3_2 = (TextView)findViewById(R.id.set3_2);
 
+        player1 = (TextView)findViewById(R.id.p1);
+        player2 = (TextView)findViewById(R.id.p2);
+
         alert = new AlertDialog.Builder(this);
 
         sharedpreferences = getSharedPreferences("players", Context.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("players", 0);
+        String p1 = preferences.getString("player1","-");
+        String p2 = preferences.getString("player2","-");
 
-        save.setOnClickListener(new View.OnClickListener() {
+        player1.setText(p1);
+        player2.setText(p2);
+
+        /*save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String nm  = name.getText().toString();
-                String psd  = pswrd.getText().toString();
+                String age  = pswrd.getText().toInt();
                 String mail  = email.getText().toString();
 
                 SharedPreferences.Editor editor = sharedpreferences.edit();
-
-                editor.putString("keyName", nm);
-                editor.putString("keyPswrd", psd);
+                editor.putString("name", nm);
+                editor.putString("age", age);
                 editor.putString("keyEmail", mail);
                 editor.commit();
                 Toast.makeText(MainActivity.this,"Data has been saved!",Toast.LENGTH_LONG).show();
 
             }
-        });
+        });*/
 
     }
 
@@ -204,18 +211,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem item) {
         Toast.makeText(this, "Selected Item: " +item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
-            case R.id.search_item:
-                Toast.makeText(this, "Search" +item.getTitle(), Toast.LENGTH_SHORT).show();
-                return true;
             case R.id.Edit_item:
-                //saveDate();
-                Intent intent = new Intent(this, EditDataFragment.class);
-                startActivity(intent);
-                /*Fragment someFragment = new EditDataFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.f, someFragment ); // give your fragment container id in first parameter
-                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-                transaction.commit();*/
+                Fragment editFragment = new EditDataFragment();
+                Bundle editbundle = new Bundle();
+                editbundle.putString("player1", player1.getText().toString());
+                editbundle.putString("player2", player2.getText().toString());
+                editFragment.setArguments(editbundle);
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frmLayout, editFragment,null);
+                fragmentTransaction.addToBackStack(editFragment.getClass().getName());
+                fragmentTransaction.commit();
                 return true;
             case R.id.View_item: {
 
@@ -223,10 +229,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FragmentTransaction myfragmentTransaction = myfragmentManager.beginTransaction ();
 
                 ViewDataFragment viewfragment = new ViewDataFragment();
-
+                Bundle bundle = new Bundle();
+                bundle.putString("player1", player1.getText().toString());
+                bundle.putString("player2", player2.getText().toString());
+                viewfragment.setArguments(bundle);
                 myfragmentTransaction.add(R.id.frmLayout, viewfragment, null);
-
-                /*You've to create a frame layout or any other layout with id inside your activity layout and then use that id in java*/
+                myfragmentTransaction.addToBackStack(viewfragment.getClass().getName());
 
                 myfragmentTransaction.commit();
 
@@ -241,24 +249,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.Home_item: {
                 SharedPreferences preferences = getSharedPreferences("players", 0);
                 preferences.edit().remove("keyName").remove("keyPswrd").remove("keyEmail").commit();
+                FragmentManager myfragmentManager = getSupportFragmentManager();
+                while (myfragmentManager.getBackStackEntryCount() > 0) {
+                    myfragmentManager.popBackStackImmediate();
+                }
                 return true;
             }
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    private void saveDate() {
-        String nm  = name.getText().toString();
-        String psd  = pswrd.getText().toString();
-        String mail  = email.getText().toString();
-
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-
-        editor.putString("keyName", nm);
-        editor.putString("keyPswrd", psd);
-        editor.putString("keyEmail", mail);
-        editor.commit();
-        Toast.makeText(MainActivity.this,"Data has been saved!",Toast.LENGTH_LONG).show();
     }
 }

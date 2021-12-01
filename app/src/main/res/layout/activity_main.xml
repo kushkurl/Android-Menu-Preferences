@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@mipmap/claycourt" />
+        app:srcCompat="@drawable/claycourt" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -30,8 +30,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/set3_1"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <RadioButton
@@ -59,7 +59,7 @@
     <TextView
         android:id="@+id/textView"
         style="@style/otherText"
-        android:layout_width="167dp"
+        android:layout_width="158dp"
         android:text="@string/jump_points_by"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +70,7 @@
 
     <com.google.android.material.slider.Slider
         android:id="@+id/jumpValue"
-        android:layout_width="163dp"
+        android:layout_width="155dp"
         android:layout_height="41dp"
         android:layout_below="@+id/p1"
         android:layout_alignStart="@+id/textView"
@@ -83,8 +83,8 @@
         app:haloColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.834"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.341"
         app:thumbColor="#4D1406"
@@ -148,17 +148,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="TextContrastCheck" />
 
+
     <TextView
         android:id="@+id/textView3"
         style="@style/otherText"
-        android:layout_width="390dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="320dp"
+        android:layout_marginTop="16dp"
         android:text="@string/men_s_singles_final"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
 
     <TextView
         android:id="@+id/set1_2"
@@ -226,7 +227,7 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/myImageView"
-        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintHorizontal_bias="0.745"
         app:layout_constraintStart_toStartOf="@+id/myImageView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499"
@@ -243,7 +244,7 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintHorizontal_bias="0.225"
         app:layout_constraintStart_toStartOf="@+id/myImageView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499"
