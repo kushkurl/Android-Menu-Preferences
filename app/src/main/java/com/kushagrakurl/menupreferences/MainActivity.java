@@ -3,16 +3,19 @@
 
 package com.kushagrakurl.menupreferences;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,8 +28,10 @@ import android.widget.Toast;
 
 import com.google.android.material.slider.Slider;
 
+import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, EditDataFragment.PlayerData{
 
     Button incScore;
     Button decScore;
@@ -77,23 +82,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         player1.setText(p1);
         player2.setText(p2);
 
-        /*save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nm  = name.getText().toString();
-                String age  = pswrd.getText().toInt();
-                String mail  = email.getText().toString();
 
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString("name", nm);
-                editor.putString("age", age);
-                editor.putString("keyEmail", mail);
-                editor.commit();
-                Toast.makeText(MainActivity.this,"Data has been saved!",Toast.LENGTH_LONG).show();
+    }
 
-            }
-        });*/
-
+    @Override
+    public void sendData(HashMap<String,String> data) {
+        player1.setText(data.get("player1").toString());
+        player2.setText(data.get("player2").toString());
+        Toast.makeText(this, "Selected Item: ", Toast.LENGTH_SHORT).show();
     }
 
     @Override

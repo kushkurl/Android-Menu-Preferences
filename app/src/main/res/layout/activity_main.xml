@@ -7,255 +7,260 @@
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
-
-    <ImageView
-        android:id="@+id/myImageView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.5"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/claycourt" />
+        android:layout_height="match_parent">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/set3_1"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toEndOf="@+id/set3_1"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        <ImageView
+            android:id="@+id/myImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/claycourt" />
 
-        <RadioButton
-            android:id="@+id/radioButton1"
-            android:layout_width="30dp"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@+id/set2_1"
-            android:text=""
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/set3_1"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@+id/set3_1"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_toEndOf="@+id/set2_1"
+                android:text="1"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_toEndOf="@+id/set2_2"
+                android:text="2"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                tools:ignore="TouchTargetSizeCheck"
+                tools:layout_editor_absoluteX="370dp" />
+
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/otherText"
+            android:layout_width="158dp"
+            android:text="@string/jump_points_by"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.065"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.347" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/jumpValue"
+            android:layout_width="155dp"
+            android:layout_height="41dp"
+            android:layout_below="@+id/p1"
+            android:layout_alignStart="@+id/textView"
+            android:backgroundTint="#FFFFFF"
+            android:scrollbarSize="8dp"
+            android:stepSize="1"
+            android:value="1"
+            android:valueFrom="1"
+            android:valueTo="5"
+            app:haloColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.34"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.341"
+            app:thumbColor="#4D1406"
+            app:thumbElevation="5dp"
+            app:tickColor="#FFFFFF"
+            app:tickColorActive="#4D1406"
+            app:tickColorInactive="#4D1406"
+            app:trackColorActive="#4D1406"
+            app:trackColorInactive="#4D1406"
+            app:trackHeight="8dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/p2"
+            style="@style/playerText"
+            android:layout_marginTop="36dp"
+            android:text="@string/player2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.093"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+            tools:ignore="TextContrastCheck" />
 
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="30dp"
-            android:layout_height="28dp"
-            android:layout_toEndOf="@+id/set2_2"
-            android:text=""
+        <TextView
+            android:id="@+id/set1_1"
+            style="@style/scoreText"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            app:layout_constraintStart_toEndOf="@+id/p1"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+        <TextView
+            android:id="@+id/set3_1"
+            style="@style/scoreText"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            app:layout_constraintStart_toEndOf="@+id/p1"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/set2_1"
+            style="@style/scoreText"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
+            android:text="0"
+            app:layout_constraintStart_toEndOf="@+id/p1"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/p1"
+            style="@style/playerText"
+            android:layout_marginTop="8dp"
+            android:text="@string/player1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.093"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:ignore="TouchTargetSizeCheck"
-            tools:layout_editor_absoluteX="370dp" />
+            tools:ignore="TextContrastCheck" />
 
 
-    </RadioGroup>
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/otherText"
+            android:layout_width="320dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/men_s_singles_final"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <TextView
-        android:id="@+id/textView"
-        style="@style/otherText"
-        android:layout_width="158dp"
-        android:text="@string/jump_points_by"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.347" />
+        <TextView
+            android:id="@+id/set1_2"
+            style="@style/scoreText"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="36dp"
+            android:text="0"
+            app:layout_constraintStart_toEndOf="@+id/p2"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/jumpValue"
-        android:layout_width="155dp"
-        android:layout_height="41dp"
-        android:layout_below="@+id/p1"
-        android:layout_alignStart="@+id/textView"
-        android:backgroundTint="#FFFFFF"
-        android:scrollbarSize="8dp"
-        android:stepSize="1"
-        android:value="1"
-        android:valueFrom="1"
-        android:valueTo="5"
-        app:haloColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.34"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.341"
-        app:thumbColor="#4D1406"
-        app:thumbElevation="5dp"
-        app:tickColor="#FFFFFF"
-        app:tickColorActive="#4D1406"
-        app:tickColorInactive="#4D1406"
-        app:trackColorActive="#4D1406"
-        app:trackColorInactive="#4D1406"
-        app:trackHeight="8dp"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <TextView
+            android:id="@+id/set2_2"
+            style="@style/scoreText"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="36dp"
+            android:text="0"
+            app:layout_constraintStart_toEndOf="@+id/p2"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <TextView
-        android:id="@+id/p2"
-        style="@style/playerText"
-        android:layout_marginTop="36dp"
-        android:text="@string/player2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:ignore="TextContrastCheck" />
+        <TextView
+            android:id="@+id/set3_2"
+            style="@style/scoreText"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="36dp"
+            android:text="0"
+            app:layout_constraintStart_toEndOf="@+id/p2"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <TextView
-        android:id="@+id/set1_1"
-        style="@style/scoreText"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="0"
-        app:layout_constraintStart_toEndOf="@+id/p1"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="52dp"
+            android:layout_toEndOf="@+id/imageView3"
+            android:text="@string/roland_garros"
+            android:textColor="#4d1406"
+            android:textSize="27dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/myImageView" />
 
-
-
-    <TextView
-        android:id="@+id/set3_1"
-        style="@style/scoreText"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="8dp"
-        android:text="0"
-        app:layout_constraintStart_toEndOf="@+id/p1"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/set2_1"
-        style="@style/scoreText"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:text="0"
-        app:layout_constraintStart_toEndOf="@+id/p1"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/p1"
-        style="@style/playerText"
-        android:layout_marginTop="8dp"
-        android:text="@string/player1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:ignore="TextContrastCheck" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="57dp"
+            android:layout_height="51dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintHorizontal_bias="0.709"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/icon" />
 
 
-    <TextView
-        android:id="@+id/textView3"
-        style="@style/otherText"
-        android:layout_width="320dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/men_s_singles_final"
-        android:textSize="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        <Button
+            android:id="@+id/addScore"
+            android:layout_width="105dp"
+            android:layout_height="44dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:backgroundTint="#4d1406"
+            android:text="@string/increament_score"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/myImageView"
+            app:layout_constraintHorizontal_bias="0.745"
+            app:layout_constraintStart_toStartOf="@+id/myImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.499"
+            tools:ignore="TouchTargetSizeCheck" />
 
-    <TextView
-        android:id="@+id/set1_2"
-        style="@style/scoreText"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:text="0"
-        app:layout_constraintStart_toEndOf="@+id/p2"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/set2_2"
-        style="@style/scoreText"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="36dp"
-        android:text="0"
-        app:layout_constraintStart_toEndOf="@+id/p2"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/set3_2"
-        style="@style/scoreText"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="36dp"
-        android:text="0"
-        app:layout_constraintStart_toEndOf="@+id/p2"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="52dp"
-        android:layout_toEndOf="@+id/imageView3"
-        android:text="@string/roland_garros"
-        android:textColor="#4d1406"
-        android:textSize="27dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/myImageView" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="57dp"
-        android:layout_height="51dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="0.709"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/icon" />
-
-
-    <Button
-        android:id="@+id/addScore"
-        android:layout_width="105dp"
-        android:layout_height="44dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:backgroundTint="#4d1406"
-        android:text="@string/increament_score"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/myImageView"
-        app:layout_constraintHorizontal_bias="0.745"
-        app:layout_constraintStart_toStartOf="@+id/myImageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <Button
-        android:id="@+id/removeScore"
-        android:layout_width="105dp"
-        android:layout_height="44dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/addScore"
-        android:backgroundTint="#4d1406"
-        android:text="@string/decrement_score"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
-        app:layout_constraintStart_toStartOf="@+id/myImageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        tools:ignore="TouchTargetSizeCheck" />
+        <Button
+            android:id="@+id/removeScore"
+            android:layout_width="105dp"
+            android:layout_height="44dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/addScore"
+            android:backgroundTint="#4d1406"
+            android:text="@string/decrement_score"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.225"
+            app:layout_constraintStart_toStartOf="@+id/myImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.499"
+            tools:ignore="TouchTargetSizeCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
         android:id="@+id/frmLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/myImageView"
+
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></FrameLayout>
 

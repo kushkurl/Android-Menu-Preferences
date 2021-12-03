@@ -12,13 +12,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ViewDataFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ViewDataFragment extends Fragment {
+public class ViewDataFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,28 +61,33 @@ public class ViewDataFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_edit_data, container, false);
-        player1=(EditText)view.findViewById(R.id.editplayer1);
-        player2=(EditText)view.findViewById(R.id.editplayer2);
+        view = inflater.inflate(R.layout.fragment_view_data, container, false);
+        player1=(TextView) view.findViewById(R.id.player1);
+        player2=(TextView)view.findViewById(R.id.player2);
+        edit=(Button)view.findViewById(R.id.Editbutton);
 
         String p1 = getArguments().getString("player1");
         String p2 = getArguments().getString("player2");
 
-        player1.setText(p1);
-        player2.setText(p2);
+        player1.setText(p1 == null? "NA": p1);
+        player2.setText(p2 == null? "NA": p2);
+        edit.setOnClickListener(this);
 
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment editFragment = new EditDataFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frmLayout, editFragment,null);
-                fragmentTransaction.addToBackStack(editFragment.getClass().getName());
-                fragmentTransaction.commit();
-            }
-        });
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_data, container, false);
+        return view;//inflater.inflate(R.layout.fragment_view_data, container, false);
+    }
+
+    public void onClick(View v) {
+        Toast.makeText(getActivity(), "Moving to edit screen.", Toast.LENGTH_LONG).show();
+        Fragment editFragment = new EditDataFragment();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Bundle bundle = new Bundle();
+        bundle.putString("player1", player1.getText().toString());
+        bundle.putString("player2", player2.getText().toString());
+        editFragment.setArguments(bundle);
+        fragmentTransaction.replace(R.id.frmLayout, editFragment,null);
+        fragmentTransaction.addToBackStack(editFragment.getClass().getName());
+        fragmentTransaction.commit();
     }
 }
