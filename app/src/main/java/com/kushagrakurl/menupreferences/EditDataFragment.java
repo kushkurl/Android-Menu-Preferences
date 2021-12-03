@@ -79,10 +79,9 @@ public class EditDataFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        //GETTING DATA FROM VIEW FRAGMENT IF NAVIGATED VIA VIEW FRAGMENT EDIT BUTTON
         String p1 = getArguments().getString("player1");
         String p2 = getArguments().getString("player2");
-
-
 
         view = inflater.inflate(R.layout.fragment_edit_data, container, false);
         player1=(EditText)view.findViewById(R.id.editplayer1);
@@ -104,12 +103,14 @@ public class EditDataFragment extends Fragment implements View.OnClickListener {
         String p1  = player1.getText().toString();
         String p2  = player2.getText().toString();
 
+        //SENDING UPDATED DATA OBJECT VIA INTERFACE
         HashMap<String,String> senddata =  new HashMap<String,String>();
         senddata.put("player1",p1);
         senddata.put("player2",p2);
         playerdata.sendData(senddata);
         SharedPreferences.Editor editor = sharedpreferences.edit();
 
+        //SAVING DATA IN SHAREDPREFERENCES
         editor.putString("player1", p1);
         editor.putString("player2", p2);
         editor.commit();
@@ -120,7 +121,7 @@ public class EditDataFragment extends Fragment implements View.OnClickListener {
         }
 
     }
-
+    //INTERFACE TO COMMUNICATE BETWEEN FRAGMENTS AND ACTIVITY
     public interface PlayerData {
         void sendData(HashMap<String,String> data);
     }

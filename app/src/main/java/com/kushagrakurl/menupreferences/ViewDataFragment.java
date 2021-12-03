@@ -66,6 +66,7 @@ public class ViewDataFragment extends Fragment implements View.OnClickListener {
         player2=(TextView)view.findViewById(R.id.player2);
         edit=(Button)view.findViewById(R.id.Editbutton);
 
+        //DATA BUNDLE PASSED VIA MAIN ACTIVITY
         String p1 = getArguments().getString("player1");
         String p2 = getArguments().getString("player2");
 
@@ -83,6 +84,7 @@ public class ViewDataFragment extends Fragment implements View.OnClickListener {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Bundle bundle = new Bundle();
+        //PASS DATA AND JUMP TO EDIT FRAGMENT ON EDIT BUTTON CLICK
         bundle.putString("player1", player1.getText().toString());
         bundle.putString("player2", player2.getText().toString());
         editFragment.setArguments(bundle);

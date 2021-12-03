@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         alert = new AlertDialog.Builder(this);
 
+        //GET DATA INITIALLY FROM SHAREDPREFERENCES
         sharedpreferences = getSharedPreferences("players", Context.MODE_PRIVATE);
         SharedPreferences preferences = getSharedPreferences("players", 0);
         String p1 = preferences.getString("player1","-");
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-
+    //INTERFACE METHOD TO REFELCT CHANGES MADE ON EDIT FRAGMENT
     @Override
     public void sendData(HashMap<String,String> data) {
         player1.setText(data.get("player1").toString());
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(this, "Selected Item: ", Toast.LENGTH_SHORT).show();
     }
 
+        //THIS FUNCTION WORKS WHEN SCORE IS ADDED OR REMOVED
     @Override
     public void onClick(View view) {
         int playerID  = (int)radioGrp.getCheckedRadioButtonId();
@@ -199,10 +201,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    //TO CREATE ITEM MENU USING TOP_MENU MENU XML
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_menu, menu);
         return true;
     }
+
+    // NAVIGATES BETWEEN FRAGMENTS AND ACTIVITY ON SELECTING ITEM FROM MENU
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Toast.makeText(this, "Selected Item: " +item.getTitle(), Toast.LENGTH_SHORT).show();
@@ -212,10 +217,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Bundle editbundle = new Bundle();
                 editbundle.putString("player1", player1.getText().toString());
                 editbundle.putString("player2", player2.getText().toString());
+                //PASSING DATA BUNDLE TO EDIT FRAGMENT TO SHOW TEXT DATA
                 editFragment.setArguments(editbundle);
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frmLayout, editFragment,null);
+                //ADDING TO STACK TO RESTORE AGAIN WHEN BACK BUTTON IS PRESSED
                 fragmentTransaction.addToBackStack(editFragment.getClass().getName());
                 fragmentTransaction.commit();
                 return true;
@@ -228,24 +235,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Bundle bundle = new Bundle();
                 bundle.putString("player1", player1.getText().toString());
                 bundle.putString("player2", player2.getText().toString());
+                //PASSING DATA BUNDLE TO VIEW FRAGMENT TO SHOW TEXT DATA
                 viewfragment.setArguments(bundle);
                 myfragmentTransaction.add(R.id.frmLayout, viewfragment, null);
                 myfragmentTransaction.addToBackStack(viewfragment.getClass().getName());
 
                 myfragmentTransaction.commit();
 
-                /*SharedPreferences preferences = getSharedPreferences("players", 0);
-                String Name = preferences.getString("keyName","NA");
-                String Password = preferences.getString("keyPswrd","NA");
-                String E_mail = preferences.getString("keyEmail","NA");
-                Toast.makeText(this, "Name:" +Name+" Password:"+Password+" Email:"+E_mail, Toast.LENGTH_SHORT).show();
-*/
                 return true;
             }
             case R.id.Home_item: {
                 SharedPreferences preferences = getSharedPreferences("players", 0);
                 preferences.edit().remove("keyName").remove("keyPswrd").remove("keyEmail").commit();
                 FragmentManager myfragmentManager = getSupportFragmentManager();
+                //REMOVING ALL THE FRAGMENTS FROM STACK WHEN HOME IS SELECTED FROM MENU
                 while (myfragmentManager.getBackStackEntryCount() > 0) {
                     myfragmentManager.popBackStackImmediate();
                 }
